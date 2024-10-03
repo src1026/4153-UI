@@ -1,0 +1,47 @@
+<div class="list row">
+  <div class="col-md-12">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="search recipes"
+        [(ngModel)]="current_recipe_id"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchRecipeName()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <!-- <h4>Recipe List</h4> -->
+    <ul class="list-group">
+      <li
+        *ngFor="let recipeSection of recipeSections; let i = index"
+        class="list-group-item"
+        [class.active]="i == currentIndex"
+        (click)="setActiveRecipeSection(recipeSection, i)"
+      >
+        {{ recipeSection.recipe_name }}
+      </li>
+    </ul>
+
+    <!-- <button
+      class="m-3 btn btn-sm btn-danger"
+      (click)="removeAllRecipeSections()"
+    >
+      Remove All
+    </button> -->
+  </div>
+  <div class="col-md-12">
+    <app-recipe-section-details
+      [viewMode]="true"
+      [currentRecipeSection]="currentRecipeSection"
+    ></app-recipe-section-details>
+  </div>
+</div>

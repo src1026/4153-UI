@@ -1,2 +1,3 @@
-# 4153-UI
-UI for jigglypuff's college student recipe app
+# W4153-P1-UI
+
+See ./docs/README.md for the README.
