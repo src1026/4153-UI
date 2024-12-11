@@ -1,31 +1,30 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { IRecipeSection } from '../../models/recipe-section.model';
-import { RecipeSectionService } from '../../services/recipe-section.service';
+import { Component, Input, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { IRecipeSection } from "../../models/recipe-section.model";
+import { RecipeSectionService } from "../../services/recipe-section.service";
 
 @Component({
-  selector: 'app-recipe-section-details',
-  templateUrl: './recipe-section-details.component.html',
-  styleUrls: ['./recipe-section-details.component.css'],
+  selector: "app-recipe-section-details",
+  templateUrl: "./recipe-section-details.component.html",
+  styleUrls: ["./recipe-section-details.component.css"],
 })
 export class RecipeSectionDetailsComponent implements OnInit {
   @Input() viewMode = false;
-
   @Input() currentRecipeSection: IRecipeSection = {
-    recipe_id: '',
-    recipe_name: '',
-    owner_id: '',
-    content: '',
-    rating: '',
-    cuisine_id: '',
-    ingredient_list: '',
-    comment: '',
-    cooking_time: '',
-    create_time: '',
-    pictures: '',
+    recipe_id: "",
+    recipe_name: "",
+    owner_id: "",
+    content: "",
+    rating: "",
+    cuisine_id: "",
+    ingredient_list: "",
+    comment: "",
+    cooking_time: "",
+    create_time: "",
+    pictures: "",
   };
-
-  message = '';
+  current_recipe_name: string = "";
+  message = "";
 
   constructor(
     private recipeSectionService: RecipeSectionService,
@@ -33,15 +32,69 @@ export class RecipeSectionDetailsComponent implements OnInit {
     private router: Router
   ) {}
 
+  searchRecipeName(): void {
+    if (!this.current_recipe_name.trim()) {
+      // If no search term is entered, reset the recipe section
+      this.currentRecipeSection = this.getEmptyRecipeSection();
+      return;
+    }
+
+    // If a search term is entered, call the service to fetch matching recipes
+    this.recipeSectionService
+      .findByRecipeName(this.current_recipe_name)
+      .subscribe({
+        next: (data) => {
+          console.log("API Response (raw):", data);
+          const searchTerm = this.current_recipe_name.toLowerCase();
+          const matchedRecipe = data.find(
+            (recipe) =>
+              recipe.recipe_name.toLowerCase().includes(searchTerm) ||
+              recipe.content.toLowerCase().includes(searchTerm)
+          );
+
+          if (matchedRecipe) {
+            this.currentRecipeSection = matchedRecipe;
+          } else {
+            this.currentRecipeSection = this.getEmptyRecipeSection();
+          }
+        },
+        error: (e) => console.error("API Error:", e),
+      });
+  }
+
+  // Helper function to reset the currentRecipeSection to an empty state
+  getEmptyRecipeSection(): IRecipeSection {
+    return {
+      recipe_id: "",
+      recipe_name: "",
+      owner_id: "",
+      content: "",
+      rating: "",
+      cuisine_id: "",
+      ingredient_list: "",
+      comment: "",
+      cooking_time: "",
+      create_time: "",
+      pictures: "",
+    };
+  }
+
+  setActiveRecipeSection(recipe: IRecipeSection, index: number): void {
+    this.currentRecipeSection = recipe;
+  }
+
   ngOnInit(): void {
+    console.log("View Mode:", this.viewMode);
+    console.log("Current Recipe Section:", this.currentRecipeSection);
+
     if (!this.viewMode) {
-      this.message = '';
-      this.getRecipeSection(this.route.snapshot.params['id']);
+      this.message = "";
+      this.getRecipeSection(this.route.snapshot.params["name"]);
     }
   }
 
-  getRecipeSection(id: string): void {
-    this.recipeSectionService.get(id).subscribe({
+  getRecipeSection(name: string): void {
+    this.recipeSectionService.get(name).subscribe({
       next: (data) => {
         this.currentRecipeSection = data;
         console.log(data);
@@ -53,7 +106,7 @@ export class RecipeSectionDetailsComponent implements OnInit {
   updatePublished(status: boolean): void {
     const data = { ...this.currentRecipeSection, published: status };
 
-    this.message = '';
+    this.message = "";
 
     this.recipeSectionService
       .update(this.currentRecipeSection.recipe_id, data)
@@ -62,14 +115,14 @@ export class RecipeSectionDetailsComponent implements OnInit {
           console.log(res);
           this.message = res.message
             ? res.message
-            : 'The status was updated successfully!';
+            : "The status was updated successfully!";
         },
         error: (e) => console.error(e),
       });
   }
 
   updateRecipeSection(): void {
-    this.message = '';
+    this.message = "";
 
     this.recipeSectionService
       .update(this.currentRecipeSection.recipe_id, this.currentRecipeSection)
@@ -78,7 +131,7 @@ export class RecipeSectionDetailsComponent implements OnInit {
           console.log(res);
           this.message = res.message
             ? res.message
-            : 'This recipe section was updated successfully!';
+            : "This recipe section was updated successfully!";
         },
         error: (e) => console.error(e),
       });
@@ -90,7 +143,7 @@ export class RecipeSectionDetailsComponent implements OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.router.navigate(['/recipe-sections']);
+          this.router.navigate(["/recipe-sections"]);
         },
         error: (e) => console.error(e),
       });

@@ -1,17 +1,17 @@
 <div>
   <div class="submit-form">
     <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="recipe_id">Recipe ID</label>
-        <input
-          type="text"
-          class="form-control"
-          id="recipe_id"
-          required
-          [(ngModel)]="recipeSection.recipe_id"
-          name="recipe_id"
-        />
-      </div>
+      <!--      <div class="form-group">-->
+      <!--        <label for="recipe_id">Recipe ID</label>-->
+      <!--        <input-->
+      <!--          type="text"-->
+      <!--          class="form-control"-->
+      <!--          id="recipe_id"-->
+      <!--          required-->
+      <!--          [(ngModel)]="recipeSection.recipe_id"-->
+      <!--          name="recipe_id"-->
+      <!--        />-->
+      <!--      </div>-->
 
       <div class="form-group">
         <label for="recipe_name">Recipe Name</label>
@@ -25,17 +25,17 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="owner_id">Owner ID</label>
-        <input
-          type="text"
-          class="form-control"
-          id="owner_id"
-          required
-          [(ngModel)]="recipeSection.owner_id"
-          name="owner_id"
-        />
-      </div>
+      <!--      <div class="form-group">-->
+      <!--        <label for="owner_id">Owner ID</label>-->
+      <!--        <input-->
+      <!--          type="text"-->
+      <!--          class="form-control"-->
+      <!--          id="owner_id"-->
+      <!--          required-->
+      <!--          [(ngModel)]="recipeSection.owner_id"-->
+      <!--          name="owner_id"-->
+      <!--        />-->
+      <!--      </div>-->
 
       <div class="form-group">
         <label for="content">Content</label>
@@ -48,17 +48,17 @@
         ></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="rating">Rating</label>
-        <input
-          type="text"
-          class="form-control"
-          id="rating"
-          required
-          [(ngModel)]="recipeSection.rating"
-          name="rating"
-        />
-      </div>
+      <!--      <div class="form-group">-->
+      <!--        <label for="rating">Rating</label>-->
+      <!--        <input-->
+      <!--          type="text"-->
+      <!--          class="form-control"-->
+      <!--          id="rating"-->
+      <!--          required-->
+      <!--          [(ngModel)]="recipeSection.rating"-->
+      <!--          name="rating"-->
+      <!--        />-->
+      <!--      </div>-->
 
       <div class="form-group">
         <label for="cuisine_id">Cuisine ID</label>
@@ -83,16 +83,16 @@
         ></textarea>
       </div>
 
-      <div class="form-group">
-        <label for="comment">Comment</label>
-        <textarea
-          class="form-control"
-          id="comment"
-          required
-          [(ngModel)]="recipeSection.comment"
-          name="comment"
-        ></textarea>
-      </div>
+      <!--      <div class="form-group">-->
+      <!--        <label for="comment">Comment</label>-->
+      <!--        <textarea-->
+      <!--          class="form-control"-->
+      <!--          id="comment"-->
+      <!--          required-->
+      <!--          [(ngModel)]="recipeSection.comment"-->
+      <!--          name="comment"-->
+      <!--        ></textarea>-->
+      <!--      </div>-->
 
       <div class="form-group">
         <label for="cooking_time">Cooking Time (minutes)</label>
@@ -106,17 +106,17 @@
         />
       </div>
 
-      <div class="form-group">
-        <label for="create_time">Date Posted</label>
-        <input
-          type="datetime-local"
-          class="form-control"
-          id="create_time"
-          required
-          [(ngModel)]="recipeSection.create_time"
-          name="create_time"
-        />
-      </div>
+      <!--      <div class="form-group">-->
+      <!--        <label for="create_time">Date Posted</label>-->
+      <!--        <input-->
+      <!--          type="datetime-local"-->
+      <!--          class="form-control"-->
+      <!--          id="create_time"-->
+      <!--          required-->
+      <!--          [(ngModel)]="recipeSection.create_time"-->
+      <!--          name="create_time"-->
+      <!--        />-->
+      <!--      </div>-->
 
       <div class="form-group">
         <label for="pictures">Pictures</label>
@@ -142,161 +142,3 @@
     </div>
   </div>
 </div>
-
-<!-- 
-<div>
-  <div class="submit-form">
-    <div *ngIf="!submitted">
-      <div class="form-group">
-        <label for="recipe_id">Recipe ID</label>
-        <input
-          type="text"
-          class="form-control"
-          id="recipe_id"
-          required
-          [(ngModel)]="recipeSection.recipe_id"
-          name="recipe_id"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="owner_id">Owner ID</label>
-        <input
-          type="text"
-          class="form-control"
-          id="owner_id"
-          required
-          [(ngModel)]="recipeSection.owner_id"
-          name="owner_id"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="recipe_name">Recipe Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="recipe_name"
-          required
-          [(ngModel)]="recipeSection.recipe_name"
-          name="recipe_name"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="content">Content</label>
-        <textarea
-          class="form-control"
-          id="content"
-          required
-          [(ngModel)]="recipeSection.content"
-          name="content"
-        ></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="likes">Likes</label>
-        <input
-          type="number"
-          class="form-control"
-          id="likes"
-          required
-          [(ngModel)]="recipeSection.likes"
-          name="likes"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="saves">Saves</label>
-        <input
-          type="number"
-          class="form-control"
-          id="saves"
-          required
-          [(ngModel)]="recipeSection.saves"
-          name="saves"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="comment">Comment</label>
-        <textarea
-          class="form-control"
-          id="comment"
-          required
-          [(ngModel)]="recipeSection.comment"
-          name="comment"
-        ></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="cuisine_id">Cuisine ID</label>
-        <input
-          type="text"
-          class="form-control"
-          id="cuisine_id"
-          required
-          [(ngModel)]="recipeSection.cuisine_id"
-          name="cuisine_id"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="ingredient_list">Ingredient List</label>
-        <textarea
-          class="form-control"
-          id="ingredient_list"
-          required
-          [(ngModel)]="recipeSection.ingredient_list"
-          name="ingredient_list"
-        ></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="cooking_time">Cooking Time (minutes)</label>
-        <input
-          type="number"
-          class="form-control"
-          id="cooking_time"
-          required
-          [(ngModel)]="recipeSection.cooking_time"
-          name="cooking_time"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="date_posted">Date Posted</label>
-        <input
-          type="datetime-local"
-          class="form-control"
-          id="date_posted"
-          required
-          [(ngModel)]="recipeSection.date_posted"
-          name="date_posted"
-        />
-      </div>
-
-      <div class="form-group">
-        <label for="pictures">Pictures</label>
-        <input
-          type="text"
-          class="form-control"
-          id="pictures"
-          required
-          [(ngModel)]="recipeSection.pictures"
-          name="pictures"
-        />
-      </div>
-
-      <button (click)="saveRecipeSection()" class="btn btn-success">
-        Submit
-      </button>
-    </div>
-    <div *ngIf="submitted">
-      <h4>Recipe was submitted successfully!</h4>
-      <button class="btn btn-success" (click)="newRecipeSection()">
-        Add Another
-      </button>
-    </div>
-  </div>
-</div> -->

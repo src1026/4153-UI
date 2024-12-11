@@ -1,199 +1,32 @@
-<div *ngIf="viewMode">
-  <div *ngIf="currentRecipeSection.recipe_id">
-    <h4>Recipe Details</h4>
-    <!-- <div>
-      <label><strong>Recipe ID:</strong></label>
-      {{ currentRecipeSection.recipe_id }}
-    </div> -->
-    <div>
-      <label><strong>Recipe Name:</strong></label>
-      {{ currentRecipeSection.recipe_name }}
-    </div>
-    <!-- <div>
-      <label><strong>Owner ID:</strong></label>
-      {{ currentRecipeSection.owner_id }}
-    </div> -->
-    <div>
-      <label><strong>Content:</strong></label>
-      {{ currentRecipeSection.content }}
-    </div>
-    <div>
-      <label><strong>Rating:</strong></label>
-      {{ currentRecipeSection.rating }}
-    </div>
-    <!-- <div>
-      <label><strong>Cuisine ID:</strong></label>
-      {{ currentRecipeSection.cuisine_id }}
-    </div> -->
-    <!-- <div>
-      <label><strong>Ingredient List:</strong></label>
-      {{ currentRecipeSection.ingredient_list }}
-    </div> -->
-    <div>
-      <label><strong>Comment:</strong></label>
-      {{ currentRecipeSection.comment }}
-    </div>
-    <div>
-      <label><strong>Cooking Time:</strong></label>
-      {{ currentRecipeSection.cooking_time }} minutes
-    </div>
-    <!-- <div>
-      <label><strong>Date Posted:</strong></label>
-      {{ currentRecipeSection.create_time }}
-    </div> -->
-    <div>
-      <label><strong>Pictures:</strong></label>
-      <img
-        src="../../../assets/pasta_123_img.jpg"
-        alt="Recipe Image"
-        style="max-width: 100%; height: auto"
-      />
-    </div>
-    <!-- <a
-      class="badge badge-warning"
-      [routerLink]="'/recipes/' + currentRecipeSection.recipe_id"
-    >
-      Edit
-    </a> -->
-  </div>
-  <!-- <div *ngIf="!currentRecipeSection.recipe_id">
-    <p>Please click on a Recipe...</p>
-  </div> -->
+<div *ngIf="!current_recipe_name.trim() && !currentRecipeSection.recipe_id">
+  <p></p>
 </div>
 
-<div *ngIf="!viewMode">
-  <div *ngIf="currentRecipeSection.recipe_id">
-    <div class="edit-form">
-      <h4>Recipe Section</h4>
-      <form>
-        <div class="form-group">
-          <label for="recipe_id">Recipe ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="recipe_id"
-            [(ngModel)]="currentRecipeSection.recipe_id"
-            name="recipe_id"
-          />
-        </div>
-        <div class="form-group">
-          <label for="recipe_name">Recipe Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="recipe_name"
-            [(ngModel)]="currentRecipeSection.recipe_name"
-            name="recipe_name"
-          />
-        </div>
-        <div class="form-group">
-          <label for="owner_id">Owner ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="owner_id"
-            [(ngModel)]="currentRecipeSection.owner_id"
-            name="owner_id"
-          />
-        </div>
-        <div class="form-group">
-          <label for="content">Content</label>
-          <textarea
-            class="form-control"
-            id="content"
-            [(ngModel)]="currentRecipeSection.content"
-            name="content"
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label for="rating">Rating</label>
-          <input
-            type="text"
-            class="form-control"
-            id="rating"
-            [(ngModel)]="currentRecipeSection.rating"
-            name="rating"
-          />
-        </div>
-        <div class="form-group">
-          <label for="cuisine_id">Cuisine ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="cuisine_id"
-            [(ngModel)]="currentRecipeSection.cuisine_id"
-            name="cuisine_id"
-          />
-        </div>
-        <div class="form-group">
-          <label for="ingredient_list">Ingredient List</label>
-          <textarea
-            class="form-control"
-            id="ingredient_list"
-            [(ngModel)]="currentRecipeSection.ingredient_list"
-            name="ingredient_list"
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label for="comment">Comment</label>
-          <textarea
-            class="form-control"
-            id="comment"
-            [(ngModel)]="currentRecipeSection.comment"
-            name="comment"
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label for="cooking_time">Cooking Time (minutes)</label>
-          <input
-            type="number"
-            class="form-control"
-            id="cooking_time"
-            [(ngModel)]="currentRecipeSection.cooking_time"
-            name="cooking_time"
-          />
-        </div>
-        <div class="form-group">
-          <label for="create_time">Date Posted</label>
-          <input
-            type="datetime-local"
-            class="form-control"
-            id="create_time"
-            [(ngModel)]="currentRecipeSection.create_time"
-            name="create_time"
-          />
-        </div>
-        <div class="form-group">
-          <label for="pictures">Picture</label>
-          <!-- <div *ngIf="currentRecipeSection.pictures"> -->
-          <img
-            [src]="../../../assets/pasta_123_img.jpg"
-            alt="Recipe Image"
-            class="img-fluid"
-          />
-          <!-- /src/assets/pasta_123_img.jpg -->
-          <!-- </div> -->
-          <!-- <div *ngIf="!currentRecipeSection.pictures">
-            <p>No image available</p>
-          </div> -->
-        </div>
-      </form>
+<!-- Message for when a search term is entered, but no matching recipe is found -->
+<div *ngIf="current_recipe_name.trim() && !currentRecipeSection.recipe_id">
+  <p>Cannot access this Recipe...</p>
+</div>
 
-      <button class="badge badge-danger mr-2" (click)="deleteRecipeSection()">
-        Delete
-      </button>
-
-      <button
-        type="submit"
-        class="badge badge-success mb-2"
-        (click)="updateRecipeSection()"
-      >
-        Update
-      </button>
-      <p>{{ message }}</p>
-    </div>
+<div *ngIf="currentRecipeSection.recipe_id">
+  <h4>Recipe Details</h4>
+  <div>
+    <label><strong>Recipe Name:</strong></label>
+    {{ currentRecipeSection.recipe_name }}
   </div>
-  <div *ngIf="!currentRecipeSection.recipe_id">
-    <p>Cannot access this Recipe...</p>
+  <div>
+    <label><strong>Content:</strong></label>
+    {{ currentRecipeSection.content }}
+  </div>
+  <div>
+    <label><strong>Rating:</strong></label>
+    {{ currentRecipeSection.rating }}
+  </div>
+  <div>
+    <label><strong>Comment:</strong></label>
+    {{ currentRecipeSection.comment }}
+  </div>
+  <div>
+    <label><strong>Cooking Time:</strong></label>
+    {{ currentRecipeSection.cooking_time }} minutes
   </div>
 </div>

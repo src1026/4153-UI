@@ -1,29 +1,33 @@
 <div class="nav_bar">
   <div class="logo">
-    <img src="./assets/logo.svg" alt="logo" />
+    <a routerLink="recipe-section" class="nav-link"
+      ><img src="./assets/logo.svg" alt="logo"
+    /></a>
   </div>
+
   <div class="nav_icons_container">
     <div class="nav_icons">
-      <img src="./assets/icon_saved.svg" alt="saved icon" />
+      <a routerLink="add" class="nav-link"
+        ><img src="./assets/icon_add.svg" alt="add icon"
+      /></a>
     </div>
     <div class="nav_icons">
-      <img src="./assets/icon_liked.svg" alt="liked icon" />
+      <a routerLink="saved" class="nav-link"
+        ><img src="./assets/icon_saved.svg" alt="saved icon"
+      /></a>
     </div>
     <div class="nav_icons">
-      <img src="./assets/icon_profile.svg" alt="profile icon" />
+      <a routerLink="liked" class="nav-link"
+        ><img src="./assets/icon_liked.svg" alt="liked icon"
+      /></a>
+    </div>
+    <div class="nav_icons">
+      <a routerLink="profile" class="nav-link"
+        ><img src="./assets/icon_profile.svg" alt="profile icon"
+      /></a>
     </div>
   </div>
 </div>
-<!-- <div class="search_recipe_container">
-  <div class="search_bar">
-    <input type="text" placeholder="search recipes" />
-  </div>
-</div>
-<div class="add_recipe_container">
-  <div class="add_button">
-    <a routerLink="add" class="nav-link">add recipe</a>
-  </div>
-</div> -->
 
 <div class="container mt-3">
   <router-outlet></router-outlet>

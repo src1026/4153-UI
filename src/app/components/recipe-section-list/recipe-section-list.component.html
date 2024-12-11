@@ -5,7 +5,8 @@
         type="text"
         class="form-control"
         placeholder="search recipes"
-        [(ngModel)]="current_recipe_id"
+        [(ngModel)]="current_recipe_name"
+        (keyup.enter)="searchRecipeName()"
       />
       <div class="input-group-append">
         <button
@@ -19,24 +20,16 @@
     </div>
   </div>
   <div class="col-md-6">
-    <!-- <h4>Recipe List</h4> -->
-    <ul class="list-group">
-      <li
-        *ngFor="let recipeSection of recipeSections; let i = index"
-        class="list-group-item"
-        [class.active]="i == currentIndex"
-        (click)="setActiveRecipeSection(recipeSection, i)"
-      >
-        {{ recipeSection.recipe_name }}
-      </li>
-    </ul>
-
-    <!-- <button
-      class="m-3 btn btn-sm btn-danger"
-      (click)="removeAllRecipeSections()"
-    >
-      Remove All
-    </button> -->
+    <!--    <ul class="list-group">-->
+    <!--      <li-->
+    <!--        *ngFor="let recipeSection of recipeSections; let i = index"-->
+    <!--        class="list-group-item"-->
+    <!--        [class.active]="i == currentIndex"-->
+    <!--        (click)="setActiveRecipeSection(recipeSection, i)"-->
+    <!--      >-->
+    <!--        {{ recipeSection.recipe_name }}-->
+    <!--      </li>-->
+    <!--    </ul>-->
   </div>
   <div class="col-md-12">
     <app-recipe-section-details

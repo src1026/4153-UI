@@ -1,25 +1,25 @@
-import { Component } from '@angular/core';
-import { IRecipeSection } from '../../models/recipe-section.model';
-import { RecipeSectionService } from '../../services/recipe-section.service';
+import { Component } from "@angular/core";
+import { IRecipeSection } from "../../models/recipe-section.model";
+import { RecipeSectionService } from "../../services/recipe-section.service";
 
 @Component({
-  selector: 'app-add-recipe-section',
-  templateUrl: './add-recipe-section.component.html',
-  styleUrls: ['./add-recipe-section.component.css'],
+  selector: "app-add-recipe-section",
+  templateUrl: "./add-recipe-section.component.html",
+  styleUrls: ["./add-recipe-section.component.css"],
 })
 export class AddRecipeSectionComponent {
   recipeSection: IRecipeSection = {
-    recipe_id: '',
-    recipe_name: '',
-    owner_id: '',
-    content: '',
-    rating: '',
-    cuisine_id: '',
-    ingredient_list: '',
-    comment: '',
-    cooking_time: '',
-    create_time: '',
-    pictures: '',
+    recipe_id: "",
+    recipe_name: "",
+    owner_id: "",
+    content: "",
+    rating: "",
+    cuisine_id: "",
+    ingredient_list: "",
+    comment: "",
+    cooking_time: "",
+    create_time: "",
+    pictures: "",
   };
   submitted = false;
 
@@ -40,17 +40,17 @@ export class AddRecipeSectionComponent {
   newRecipeSection(): void {
     this.submitted = false;
     this.recipeSection = {
-      recipe_id: '',
-      recipe_name: '',
-      owner_id: '',
-      content: '',
-      rating: '',
-      cuisine_id: '',
-      ingredient_list: '',
-      comment: '',
-      cooking_time: '',
-      create_time: '',
-      pictures: '',
+      recipe_id: "",
+      recipe_name: "",
+      owner_id: "",
+      content: "",
+      rating: "",
+      cuisine_id: "",
+      ingredient_list: "",
+      comment: "",
+      cooking_time: "",
+      create_time: "",
+      pictures: "",
     };
   }
 }
