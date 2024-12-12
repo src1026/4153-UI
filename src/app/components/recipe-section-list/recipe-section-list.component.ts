@@ -8,6 +8,7 @@ import { RecipeSectionService } from "../../services/recipe-section.service";
   styleUrls: ["./recipe-section-list.component.css"],
 })
 export class RecipeSectionListComponent implements OnInit {
+  loading = false;
   recipeSections?: IRecipeSection[] = [];
   currentRecipeSection: IRecipeSection = {
     recipe_id: -1,
@@ -34,16 +35,20 @@ export class RecipeSectionListComponent implements OnInit {
   }
 
   retrieveRecipeSections(): void {
+    console.log("retrieve recipe sections");
+    this.loading = true;
     this.recipeSectionService.getAll().subscribe({
       next: (data) => {
         this.recipeSections = data;
         console.log(data);
+        this.loading = false;
       },
       error: (e) => console.error(e),
     });
   }
 
   refreshList(): void {
+    console.log("refresh list");
     this.retrieveRecipeSections();
     this.currentRecipeSection = {
       recipe_id: -1,
@@ -77,25 +82,16 @@ export class RecipeSectionListComponent implements OnInit {
   }
 
   searchRecipeName(): void {
-    this.currentRecipeSection = {
-      recipe_id: -1,
-      recipe_name: "",
-      user_id: -1,
-      content: "",
-      rating: -1.1,
-      cuisine_id: 0,
-      ingredient_id: "",
-      comment: "",
-      cooking_time: 0,
-      create_time: "",
-      pictures: "",
-    };
+    console.log("search recipe name");
+    this.loading = true;
+    this.currentRecipeSection = this.getEmptyRecipeSection();
     this.currentIndex = -1;
 
     if (!this.current_recipe_name.trim()) {
       // If the search term is empty, show no recipes
       this.recipeSections = [];
-      this.currentRecipeSection = this.getEmptyRecipeSection(); // Reset the selected recipe
+      // this.currentRecipeSection = this.getEmptyRecipeSection(); // Reset the selected recipe
+      this.loading = false;
       return;
     }
 
@@ -119,8 +115,10 @@ export class RecipeSectionListComponent implements OnInit {
             this.setActiveRecipeSection(this.recipeSections[0], 0);
           } else {
             // If no recipe is found, reset the current recipe section
-            this.currentRecipeSection = this.getEmptyRecipeSection();
+            // this.currentRecipeSection = this.getEmptyRecipeSection();
+            this.recipeSections = [];
           }
+          this.loading = false;
         },
         error: (e) => console.error("API Error:", e),
       });

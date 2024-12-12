@@ -1,4 +1,4 @@
-<div class="list row">
+<!-- <div class="list row">
   <div class="col-md-12">
     <div class="input-group mb-3">
       <input
@@ -19,21 +19,51 @@
       </div>
     </div>
   </div>
-  <div class="col-md-6">
-    <!--    <ul class="list-group">-->
-    <!--      <li-->
-    <!--        *ngFor="let recipeSection of recipeSections; let i = index"-->
-    <!--        class="list-group-item"-->
-    <!--        [class.active]="i == currentIndex"-->
-    <!--        (click)="setActiveRecipeSection(recipeSection, i)"-->
-    <!--      >-->
-    <!--        {{ recipeSection.recipe_name }}-->
-    <!--      </li>-->
-    <!--    </ul>-->
-  </div>
   <div class="col-md-12">
     <app-recipe-section-details
-      [viewMode]="true"
+      [viewMode]="false"
+      [currentRecipeSection]="currentRecipeSection"
+    ></app-recipe-section-details>
+  </div>
+</div> -->
+
+<div class="list row">
+  <!-- Search bar -->
+  <div class="col-md-12">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search recipes"
+        [(ngModel)]="current_recipe_name"
+        (keyup.enter)="searchRecipeName()"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchRecipeName()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Show loading message while data is being fetched -->
+  <div class="col-md-12" *ngIf="loading">
+    <p>Loading recipe sections...</p>
+  </div>
+
+  <!-- Show no recipes message if no matches are found -->
+  <div class="col-md-12" *ngIf="!loading && recipeSections?.length === 0">
+    <p>No recipes found. Please try a different search term.</p>
+  </div>
+
+  <!-- Recipe details section -->
+  <div class="col-md-12">
+    <app-recipe-section-details
+      [viewMode]="false"
       [currentRecipeSection]="currentRecipeSection"
     ></app-recipe-section-details>
   </div>

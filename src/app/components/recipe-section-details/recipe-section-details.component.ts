@@ -9,6 +9,7 @@ import { RecipeSectionService } from "../../services/recipe-section.service";
   styleUrls: ["./recipe-section-details.component.css"],
 })
 export class RecipeSectionDetailsComponent implements OnInit {
+  loading = true;
   @Input() viewMode = false;
   @Input() currentRecipeSection: IRecipeSection = {
     recipe_id: -1,
@@ -33,9 +34,12 @@ export class RecipeSectionDetailsComponent implements OnInit {
   ) {}
 
   searchRecipeName(): void {
+    console.log("search recipe name");
+    this.loading = true;
     if (!this.current_recipe_name.trim()) {
       // If no search term is entered, reset the recipe section
       this.currentRecipeSection = this.getEmptyRecipeSection();
+      this.loading = false;
       return;
     }
 
@@ -57,6 +61,7 @@ export class RecipeSectionDetailsComponent implements OnInit {
           } else {
             this.currentRecipeSection = this.getEmptyRecipeSection();
           }
+          this.loading = false;
         },
         error: (e) => console.error("API Error:", e),
       });
@@ -94,10 +99,13 @@ export class RecipeSectionDetailsComponent implements OnInit {
   }
 
   getRecipeSection(name: string): void {
+    console.log("get recipe section");
+    this.loading = true;
     this.recipeSectionService.get(name).subscribe({
       next: (data) => {
         this.currentRecipeSection = data;
         console.log(data);
+        this.loading = false;
       },
       error: (e) => console.error(e),
     });

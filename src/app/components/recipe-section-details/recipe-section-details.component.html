@@ -1,13 +1,12 @@
-<!-- <div *ngIf="!current_recipe_name.trim() && !currentRecipeSection.recipe_id">
-  <p></p>
-</div> -->
-
-<!-- Message for when a search term is entered, but no matching recipe is found -->
-<div *ngIf="current_recipe_name.trim() && !currentRecipeSection.recipe_id">
-  <p>no matches...</p>
+<div
+  *ngIf="
+    !loading && current_recipe_name.trim() && !currentRecipeSection.recipe_id
+  "
+>
+  <p>No matches...</p>
 </div>
 
-<div *ngIf="currentRecipeSection.recipe_id">
+<div *ngIf="!loading && currentRecipeSection.recipe_id">
   <h4>Recipe Details</h4>
   <div>
     <label><strong>Recipe Name:</strong></label>
