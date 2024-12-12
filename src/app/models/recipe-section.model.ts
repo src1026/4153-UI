@@ -1,13 +1,13 @@
 export interface IRecipeSection {
-  recipe_id: string;
+  recipe_id: number;
   recipe_name: string;
-  owner_id: string;
+  user_id: number;
   content: string;
-  rating: string;
-  cuisine_id: string;
-  ingredient_list: string;
+  rating: number;
+  cuisine_id: number;
+  ingredient_id: string;
   comment: string;
-  cooking_time: string;
+  cooking_time: number;
   create_time: string;
   pictures: string;
 }

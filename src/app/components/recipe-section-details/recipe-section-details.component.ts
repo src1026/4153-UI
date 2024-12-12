@@ -11,15 +11,15 @@ import { RecipeSectionService } from "../../services/recipe-section.service";
 export class RecipeSectionDetailsComponent implements OnInit {
   @Input() viewMode = false;
   @Input() currentRecipeSection: IRecipeSection = {
-    recipe_id: "",
+    recipe_id: -1,
     recipe_name: "",
-    owner_id: "",
+    user_id: -1,
     content: "",
-    rating: "",
-    cuisine_id: "",
-    ingredient_list: "",
+    rating: -1.1,
+    cuisine_id: 0,
+    ingredient_id: "",
     comment: "",
-    cooking_time: "",
+    cooking_time: 0,
     create_time: "",
     pictures: "",
   };
@@ -65,15 +65,15 @@ export class RecipeSectionDetailsComponent implements OnInit {
   // Helper function to reset the currentRecipeSection to an empty state
   getEmptyRecipeSection(): IRecipeSection {
     return {
-      recipe_id: "",
+      recipe_id: -1,
       recipe_name: "",
-      owner_id: "",
+      user_id: -1,
       content: "",
-      rating: "",
-      cuisine_id: "",
-      ingredient_list: "",
+      rating: -1.1,
+      cuisine_id: 0,
+      ingredient_id: "",
       comment: "",
-      cooking_time: "",
+      cooking_time: 0,
       create_time: "",
       pictures: "",
     };

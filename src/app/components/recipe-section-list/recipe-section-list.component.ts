@@ -10,15 +10,15 @@ import { RecipeSectionService } from "../../services/recipe-section.service";
 export class RecipeSectionListComponent implements OnInit {
   recipeSections?: IRecipeSection[] = [];
   currentRecipeSection: IRecipeSection = {
-    recipe_id: "",
+    recipe_id: -1,
     recipe_name: "",
-    owner_id: "",
+    user_id: -1,
     content: "",
-    rating: "",
-    cuisine_id: "",
-    ingredient_list: "",
+    rating: -1.1,
+    cuisine_id: 0,
+    ingredient_id: "",
     comment: "",
-    cooking_time: "",
+    cooking_time: 0,
     create_time: "",
     pictures: "",
   };
@@ -46,15 +46,15 @@ export class RecipeSectionListComponent implements OnInit {
   refreshList(): void {
     this.retrieveRecipeSections();
     this.currentRecipeSection = {
-      recipe_id: "",
+      recipe_id: -1,
       recipe_name: "",
-      owner_id: "",
+      user_id: -1,
       content: "",
-      rating: "",
-      cuisine_id: "",
-      ingredient_list: "",
+      rating: -1.1,
+      cuisine_id: 0,
+      ingredient_id: "",
       comment: "",
-      cooking_time: "",
+      cooking_time: 0,
       create_time: "",
       pictures: "",
     };
@@ -78,15 +78,15 @@ export class RecipeSectionListComponent implements OnInit {
 
   searchRecipeName(): void {
     this.currentRecipeSection = {
-      recipe_id: "",
+      recipe_id: -1,
       recipe_name: "",
-      owner_id: "",
+      user_id: -1,
       content: "",
-      rating: "",
-      cuisine_id: "",
-      ingredient_list: "",
+      rating: -1.1,
+      cuisine_id: 0,
+      ingredient_id: "",
       comment: "",
-      cooking_time: "",
+      cooking_time: 0,
       create_time: "",
       pictures: "",
     };
@@ -127,15 +127,15 @@ export class RecipeSectionListComponent implements OnInit {
   }
   getEmptyRecipeSection(): IRecipeSection {
     return {
-      recipe_id: "",
+      recipe_id: -1,
       recipe_name: "",
-      owner_id: "",
+      user_id: -1,
       content: "",
-      rating: "",
-      cuisine_id: "",
-      ingredient_list: "",
+      rating: -1.1,
+      cuisine_id: 0,
+      ingredient_id: "",
       comment: "",
-      cooking_time: "",
+      cooking_time: 0,
       create_time: "",
       pictures: "",
     };

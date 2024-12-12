@@ -9,7 +9,7 @@ import { IRecipeSection } from "../models/recipe-section.model";
   providedIn: "root",
 })
 export class RecipeSectionService {
-  private baseUrl = "http://0.0.0.0:8000/recipes_sections"; // Adjust the base URL as needed
+  private baseUrl = "http://localhost:8000/recipes_sections"; // Adjust the base URL as needed
 
   constructor(private http: HttpClient) {}
 
