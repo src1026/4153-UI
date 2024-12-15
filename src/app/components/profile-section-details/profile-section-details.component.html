@@ -1,0 +1,17 @@
+<div *ngIf="isLoading; else userContent">
+  <p>Loading user information...</p>
+</div>
+
+<ng-template #userContent>
+  <div *ngIf="userInfo; else noData">
+    <h1>User Profile</h1>
+    <p><strong>User ID:</strong> {{ userInfo.user_id }}</p>
+    <p><strong>Email:</strong> {{ userInfo.email }}</p>
+    <p><strong>Profile Picture:</strong> {{ userInfo.profile_pic }}</p>
+    <p><strong>Ranking:</strong> {{ userInfo.ranking }}</p>
+  </div>
+
+  <ng-template #noData>
+    <p>No user information available.</p>
+  </ng-template>
+</ng-template>
