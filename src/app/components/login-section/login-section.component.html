@@ -5,19 +5,32 @@
 </div>
 
 <ng-template #loginForm>
-  <h1>Login to your account</h1>
+  <h2>Login to your account</h2>
+  <br />
   <form (submit)="login()">
     <div>
-      <label for="username">Username:</label>
-      <input type="username" [(ngModel)]="username" name="username" required />
+      <input
+        type="username"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="username"
+      />
     </div>
+    <br />
     <div>
-      <label for="password">Password:</label>
-      <input type="password" [(ngModel)]="password" name="password" required />
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="password"
+      />
     </div>
+    <br />
     <button type="submit">Login</button>
   </form>
   <div>
+    <br />
+    <br />
     <p>
       Don't have an account? <button (click)="goToSignup()">Sign Up</button>
     </p>

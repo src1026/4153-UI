@@ -5,10 +5,23 @@
 <ng-template #userContent>
   <div *ngIf="userInfo; else noData">
     <h1>User Profile</h1>
-    <p><strong>User ID:</strong> {{ userInfo.user_id }}</p>
-    <p><strong>Email:</strong> {{ userInfo.email }}</p>
-    <p><strong>Profile Picture:</strong> {{ userInfo.profile_pic }}</p>
-    <p><strong>Ranking:</strong> {{ userInfo.ranking }}</p>
+    <div>
+      <p><strong>User ID:</strong> {{ userInfo.user_id }}</p>
+    </div>
+    <div>
+      <p><strong>Email:</strong> {{ userInfo.email }}</p>
+    </div>
+
+    <div *ngIf="userInfo.profile_pic">
+      <img
+        [src]="userInfo.profile_pic"
+        alt="profile picture"
+        style="max-width: 100%; height: auto"
+      />
+    </div>
+    <div>
+      <p><strong>Ranking:</strong> {{ userInfo.ranking }}</p>
+    </div>
   </div>
 
   <ng-template #noData>

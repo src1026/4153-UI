@@ -28,4 +28,12 @@
     <label><strong>Cooking Time:</strong></label>
     {{ currentRecipeSection.cooking_time }} minutes
   </div>
+  <div *ngIf="currentRecipeSection.pictures">
+    <label><strong>Recipe Image:</strong></label>
+    <img
+      [src]="currentRecipeSection.pictures"
+      alt="Recipe Image"
+      style="max-width: 100%; height: auto"
+    />
+  </div>
 </div>
