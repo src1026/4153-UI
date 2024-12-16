@@ -40,19 +40,18 @@ export class LoginSectionComponent implements OnInit {
   }
 
   login(): void {
-    // this.isLoading = true;
-    // this.authService.login(this.username, this.password).subscribe({
-    //   next: (data: any) => {
-    //     localStorage.setItem("token", data.access_token);
-    //     this.checkUserProfile();
-    //   },
-    //   error: (err) => {
-    //     console.error("Login failed:", err);
-    //     this.errorMessage = "Invalid username or password.";
-    //     this.isLoading = false;
-    //   },
-    // });
-    this.router.navigate(["/user-sections/5"]);
+    this.isLoading = true;
+    this.authService.login(this.username, this.password).subscribe({
+      next: (data: any) => {
+        localStorage.setItem("token", data.access_token);
+        this.checkUserProfile();
+      },
+      error: (err) => {
+        console.error("Login failed:", err);
+        this.errorMessage = "Invalid username or password.";
+        this.isLoading = false;
+      },
+    });
   }
 
   logout(): void {
